@@ -1,0 +1,17 @@
+{
+  "name": "bingbongbot",
+  "version": "0.0.5",
+  "description": "Bing Bong!",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Dylan Dunn <dhd5076@rit.edu>",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.3.0",
+    "ffmpeg": "0.0.4",
+    "ffmpeg-binaries": "^3.2.2-3",
+    "node-opus": "^0.2.7"
+  }
+}

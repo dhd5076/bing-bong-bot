@@ -1,11 +1,21 @@
 const Discord = require('discord.js');
+const CleverbotAPI = require('cleverbot-api');
 var fs = require('fs');
 const bot = new Discord.Client();
-
+const cleverbot = new CleverbotAPI('CC7bnNhkqtI-FVQygkpPS9KHqfQ');
 bot.on('ready', () => {
+    bot.user.setActivity("Memes");
 });
 
 bot.on('message', (message) => {
+    if (message.isMentioned(bot.user)) {
+        cleverbot.getReply({
+            input: message.content
+        }, (err, response) => {
+            console.log(err);
+            message.reply(response.output);
+        });
+    }
     switch(message.content.split(' ')[0]) {
         case '!bing':
             message.channel.sendMessage('Bong!');
@@ -15,13 +25,15 @@ bot.on('message', (message) => {
             if (fs.existsSync('./music/' + song + '.mp3') && 
                 typeof message.member.voiceChannelID != 'undefined');
             {  
-                message.channel.sendMessage("You're about to get memed!");
-                message.member.voiceChannel.join().then(async (voiceConnection) => { 
-                    voiceConnection.playFile('./music/'+ song +'.mp3');
-                    voiceConnection.dispatcher.setVolume(0.5);
-                }).catch((err) => {
-                    console.log(err)
-                });
+                try {
+                    message.member.voiceChannel.join().then(async (voiceConnection) => {
+                        message.channel.sendMessage("You're about to get memed!"); 
+                        voiceConnection.playFile('./music/'+ song +'.mp3');
+                        voiceConnection.dispatcher.setVolume(0.5);
+                    });
+                } catch(e) {
+                    console.log(e);
+                }
             }
             break;
         case '!volume':
@@ -51,6 +63,14 @@ bot.on('message', (message) => {
                 });
                 message.channel.sendMessage(reply1);
             });
+        case '!help':
+            message.reply(
+                "\n!bing\n" +
+                "!volume {0-100}\n" +
+                "!play {song}\n" +
+                "!songs\n" + 
+                "and more...\n"
+                );
         default:
             if (message.author.displayName != bot.displayName) {
                 message.channel.sendMessage("What?");

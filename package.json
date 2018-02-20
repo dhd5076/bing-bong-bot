@@ -9,6 +9,7 @@
   "author": "Dylan Dunn <dhd5076@rit.edu>",
   "license": "ISC",
   "dependencies": {
+    "cleverbot-api": "^1.0.3",
     "discord.js": "^11.3.0",
     "ffmpeg": "0.0.4",
     "ffmpeg-binaries": "^3.2.2-3",

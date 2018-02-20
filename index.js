@@ -27,7 +27,6 @@ bot.on('message', (message) => {
             {  
                 try {
                     message.member.voiceChannel.join().then(async (voiceConnection) => {
-                        message.channel.sendMessage("You're about to get memed!"); 
                         voiceConnection.playFile('./music/'+ song +'.mp3');
                         voiceConnection.dispatcher.setVolume(0.5);
                     });

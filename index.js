@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const CleverbotAPI = require('cleverbot-api');
 var fs = require('fs');
 const bot = new Discord.Client();
-const cleverbot = new CleverbotAPI('CC7bnNhkqtI-FVQygkpPS9KHqfQ');
+const cleverbot = new CleverbotAPI('CLEVERBOT_API');
 bot.on('ready', () => {
     bot.user.setActivity("Memes");
 });

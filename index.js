@@ -48,7 +48,7 @@ bot.on('message', (message) => {
                 }
                 else if (volume > 100 && 
                         message.member.lastMessage.content.split(' ')[0] == "!volume") {
-                    message.reply("No, Asshole!");
+                    message.reply("You can't do that");
                 }
             });
             break;
@@ -79,4 +79,4 @@ bot.on('message', (message) => {
 
 });
 
-bot.login('NDE0NTQ0MzE3ODk0NDkyMTcw.DWo7-A.lUgR2j8Tn3y7wkpDO_Az8QqyVpw');
+bot.login('DISCORD_API_KEY');
